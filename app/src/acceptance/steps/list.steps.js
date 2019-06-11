@@ -34,6 +34,8 @@ defineSupportCode(function ({ When, Then }) {
     Then('the List Response has records:', function (data) {
         return requester.getLastResponse().then((response) => {
             const expected = data.hashes();
+            console.log("------",response.body.data)
+            console.log(data)
 
             expect(response.body.data, 'to have length', expected.length);
 

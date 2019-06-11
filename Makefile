@@ -46,22 +46,17 @@ install: ## install de paquetes
 	sudo chmod -R 777 app/*;
 
 tast: ## installar: make tast EXECUTE=install
-	docker run -it -v "$(PWD)/app:/app" -w "/app" $(IMAGE_DEPLOY) npm $(EXECUTE)
+	docker run -it -v "$(PWD)/app:/app" -w "/app" $(IMAGE_DEPLOY) npm $(EXECUTE);
 
 start: ## Test project
-	docker run -it -p 3000:3000 --name jest-cucumber-dev-npm-gerking  -v "$(PWD)/app:/app" -w "/app"  $(IMAGE_DEPLOY) npm start
+	docker run -it -p 3000:3000 --name jest-star -v "$(PWD)/app:/app" -w "/app"  $(IMAGE_DEPLOY) npm start;
 
 up: ## inicialiar mysql y applicacion
-	@IMAGE_DEPLOY_TEST=$(IMAGE_DEPLOY) \
-	PROJECT_NAME=$(PROJECT_NAME) \
-	VIRTUAL_HOST=$(VIRTUAL_HOST) \
-	docker-compose -p $(PROJECT_NAME) up
+	@IMAGE_DEPLOY=$(IMAGE_DEPLOY) \
+	docker-compose -p $(PROJECT_NAME) up;
 
-test: ## Test project
+test-bdd: ## inicializar proyecto: make ssh
 	docker run -it -p 3000:3000 --name $(PROJECT_NAME)  -v "$(PWD)/app:/app" -w "/app"  $(IMAGE_DEPLOY) npm test
-
-ssh: ## inicializar proyecto: make login
-	docker run -it -p 3000:3000 --name $(PROJECT_NAME)  -v "$(PWD)/app:/app" -w "/app"  $(IMAGE_DEPLOY) bash
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'

@@ -1,0 +1,30 @@
+{
+  "name": "cucumber-integration-testing",
+  "version": "1.0.0",
+  "main": "src/server/index.js",
+  "author": "Ronald cutisaca Ramirez <ronaldfox2015@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "grunt acceptance",
+    "start": "node src/server/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "build-url": "^1.0.9",
+    "convict": "^5.0.0",
+    "cucumber": "^2.3.1",
+    "express": "^4.15.3",
+    "grunt": "^1.0.1",
+    "grunt-express-server": "^0.5.3",
+    "grunt-freeport": "^0.1.1",
+    "grunt-shell": "^2.1.0",
+    "http-status-codes": "^1.1.6",
+    "jsonpath": "^1.0.2",
+    "memjs": "^1.2.0",
+    "node-fetch": "^1.7.1",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "unexpected": "^10.29.0"
+  }
+}
