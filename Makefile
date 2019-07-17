@@ -56,7 +56,10 @@ up: ## inicialiar mysql y applicacion
 	docker-compose -p $(PROJECT_NAME) up;
 
 test-bdd: ## inicializar proyecto: make ssh
-	docker run -it -p 3000:3000 --name $(PROJECT_NAME)  -v "$(PWD)/app:/app" -w "/app"  $(IMAGE_DEPLOY) npm test
+	docker run -it -p 3000:3000 --name $(PROJECT_NAME)  -v "$(PWD)/app:/app" -w "/app"  $(IMAGE_DEPLOY) npm test;
+	docker rm -f $(PROJECT_NAME);
+stop:
+	docker rm -f $(PROJECT_NAME);
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'

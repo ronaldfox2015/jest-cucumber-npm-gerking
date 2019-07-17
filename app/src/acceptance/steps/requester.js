@@ -1,10 +1,9 @@
 const fetch = require('node-fetch');
 const buildUrl = require('build-url');
 
-// const port = process.env.PORT;
-const port = 3000;
+const port = process.env.PORT;
 
-const baseUrl = 'http://backend:' + port;
+const baseUrl = 'https://dev4c.services.aptitus.com:' + port;
 
 // The last response that we received
 let lastResponse;
