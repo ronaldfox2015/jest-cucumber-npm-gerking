@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const buildUrl = require('build-url');
+const microservices = require('./../config/service');
 
 const port = process.env.PORT;
 
@@ -10,9 +11,17 @@ let lastResponse;
 
 // The access token to use
 let accessToken;
+function getConfig() {
+    return service;
+}
 
 // Perform a GET request to the server
 function get(url) {
+
+    if (typeof microservices.service.auth_url != "undefined") {
+        baseUrl = microservices.service.auth_url;
+    }
+
     const realUrl = buildUrl(baseUrl, {
         path: url
     });
@@ -46,6 +55,9 @@ function get(url) {
 
 // Perform a POST request to the server
 function post(url, body) {
+    if (typeof microservices.service.auth_url != "undefined") {
+        baseUrl = microservices.service.auth_url;
+    }
     const realUrl = buildUrl(baseUrl, {
         path: url
     });
@@ -85,6 +97,10 @@ function getLastResponse() {
 
 // Authenticate as the given user
 function authenticate(user, pass) {
+    if (typeof microservices.service.auth_url != "undefined") {
+        baseUrl = microservices.service.auth_url;
+    }
+
     const realUrl = buildUrl(baseUrl, {
         path: 'api/auth'
     });
@@ -112,5 +128,6 @@ module.exports = {
     post: post,
     authenticate: authenticate,
     clearAuthentication: clearAuthentication,
-    getLastResponse: getLastResponse
+    getLastResponse: getLastResponse,
+    getConfig: getConfig
 };

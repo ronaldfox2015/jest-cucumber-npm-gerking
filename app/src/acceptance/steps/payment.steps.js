@@ -6,12 +6,15 @@ const requester = require('./requester');
 
 defineSupportCode(function ({ When, Then }) {
   When("I'm generating a cart:", function(data) {
-      console.log("------------------------------");
-      console.log(data);
+      console.log("--------------inicio----------------");
+      const rest= data.hashes();
+      console.log(requester.getConfig().service.auth_url);
+     /* rest.forEach((key) => {
+        console.log("------------------------------");
+        console.log(key['customer_id']);
 
- 
-      
-      console.log("------------------------------");
+
+      });*/
       const response = requester.post('checkout',
                 {
                     "grant_type": "client_credentials",
