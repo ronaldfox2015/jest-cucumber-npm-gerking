@@ -57,7 +57,7 @@ up: ## inicialiar mysql y applicacion
 
 test-bdd: ## inicializar proyecto: make ssh
 	docker run -it -p 3000:3000 --name $(PROJECT_NAME)  -v "$(PWD)/app:/app" -w "/app"  $(IMAGE_DEPLOY) npm test;
-	docker rm -f $(PROJECT_NAME);
+	make stop;
 stop:
 	docker rm -f $(PROJECT_NAME);
 
