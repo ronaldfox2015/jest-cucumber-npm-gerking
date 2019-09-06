@@ -12,9 +12,11 @@
     "body-parser": "^1.17.2",
     "browser": "^0.2.6",
     "build-url": "^1.0.9",
+    "chromedriver": "^76.0.1",
     "convict": "^5.0.0",
     "cucumber": "^2.3.1",
     "express": "^4.15.3",
+    "geckodriver": "^1.16.2",
     "grunt": "^1.0.1",
     "grunt-express-server": "^0.5.3",
     "grunt-freeport": "^0.1.1",
@@ -26,6 +28,7 @@
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
     "passport-http-bearer": "^1.0.1",
+    "selenium-webdriver": "^4.0.0-alpha.4",
     "unexpected": "^10.29.0"
   }
 }
